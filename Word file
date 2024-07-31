@@ -1,0 +1,104 @@
+Private Sub InputDataButton_Click()
+    ProjectInfoForm.Show
+End Sub
+
+Private Sub CancelButton_Click()
+    ProjectInfoForm.Hide
+End Sub
+
+Private Sub SubmitButton_Click()
+
+    ActiveDocument.CustomDocumentProperties("Project Number").Value = Me.ProjectNumber.Value
+    'ActiveDocument.Fields("Project Number").Update()
+    
+    ActiveDocument.CustomDocumentProperties("Project Address").Value = Me.ProjectAddress.Value
+    'ActiveDocument.Fields("Project Address").Update()
+    
+    ActiveDocument.CustomDocumentProperties("Client Name").Value = Me.ClientName.Value
+    'ActiveDocument.Fields("Client Name").Update()
+    
+    ActiveDocument.CustomDocumentProperties("Issue Date").Value = Me.IssueDate.Value
+    'ActiveDocument.Fields("Issue Date").Update()
+    
+    ActiveDocument.CustomDocumentProperties("Prepared By").Value = Me.PreparedBy.Value
+    'ActiveDocument.Fields("Prepared By").Update()
+
+    ActiveDocument.CustomDocumentProperties("Prepared By Initials").Value = Me.PreparedByInitials.Value
+    'ActiveDocument.Fields("Prepared By Initials").Update()
+
+    ActiveDocument.CustomDocumentProperties("Checked By").Value = Me.CheckedBy.Value
+    'ActiveDocument.Fields("Checked By").Update()
+
+    ActiveDocument.CustomDocumentProperties("Checked By Initials").Value = Me.CheckedByInitials.Value
+    'ActiveDocument.Fields("Checked By Initials").Update()
+    
+    If ActiveDocument.Fields.Update = 0 Then
+        MsgBox "Update Successful"
+    Else
+        MsgBox "Field " & ActiveDocument.Fields.Update & _
+        " has an error"
+    End If
+                
+    'Dim ProjectNumber As Range
+    'Set ProjectNumber = ActiveDocument.Bookmarks("ProjectNumber").Range
+    'ProjectNumber.Text = Me.ProjectNumber.Value
+    
+    'Dim ProjectAddress As Range
+    'Set ProjectAddress = ActiveDocument.Bookmarks("ProjectAddress").Range
+    'ProjectAddress.Text = Me.ProjectAddress.Value
+    
+    'objDoc.CustomProperties("w_ean").Value = "123"
+                
+    'Dim ClientName As Range
+    'Set ClientName = ActiveDocument.Bookmarks("ClientName").Range
+    'ClientName.Text = Me.ClientName.Value
+    
+    'Dim IssueDate As Range
+    'Set IssueDate = ActiveDocument.Bookmarks("IssueDate").Range
+    'IssueDate.Text = Me.IssueDate.Value
+    
+    'Dim PreparedBy As Range
+    'Set PreparedBy = ActiveDocument.Bookmarks("PreparedBy").Range
+    'PreparedBy.Text = Me.PreparedBy.Value
+    
+    'Dim PreparedByInitials As Range
+    'Set PreparedByInitials = ActiveDocument.Bookmarks("PreparedByInitials").Range
+    'PreparedByInitials.Text = Me.PreparedByInitials.Value
+
+    'Dim CheckedBy As Range
+    'Set CheckedBy = ActiveDocument.Bookmarks("CheckedBy").Range
+    'CheckedBy.Text = Me.CheckedBy.Value
+
+    'Dim CheckedByInitials As Range
+    'Set CheckedByInitials = ActiveDocument.Bookmarks("CheckedByInitials").Range
+    'CheckedByInitials.Text = Me.CheckedByInitials.Value
+
+    Me.Repaint
+    
+   ' Dim strDocName As String
+    'Dim intPos As Integer
+  
+    'strDocName = ""
+    'intPos = InStrRev(strDocName, ".")
+    
+    'If intPos = 0 Then
+    '    strDocName = InputBox("Please enter the name " & _
+    '        "of your document.")
+    'Else
+    '    strDocName = Left(strDocName, intPos - 1)
+    '    strDocName = strDocName & ".docx"
+    'End If
+    '
+    'ActiveDocument.SaveAs2 FileName:=strDocName, _
+    '    FileFormat:=wdFormatDocumentDefault
+        
+    
+    ProjectInfoForm.Hide
+    'SavedFile.Show
+        
+End Sub
+
+Private Sub UserForm_Initialize()
+    PreparedBy.List = Array("S Gray B.Eng (Hons) PGCert C.Build.E MCABE AMICE", "Ing O Riha", "P J GOACHER B.Sc. (Hons.), C.Eng., MICE, M.I.Struct.E", "J Bray B.Eng (Hons.)", "G Stevens M.Eng")
+    CheckedBy.List = Array("S Gray B.Eng (Hons) PGCert C.Build.E MCABE AMICE", "Ing O Riha", "P J GOACHER B.Sc. (Hons.), C.Eng., MICE, M.I.Struct.E", "J Bray B.Eng (Hons.)")
+End Sub
